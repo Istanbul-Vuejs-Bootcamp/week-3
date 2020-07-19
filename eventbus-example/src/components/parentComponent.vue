@@ -1,8 +1,12 @@
 <template>
     <div class="parent">
-        Parent
-       <div style="margin: 25px 25px 25px 25px;"><child1 /></div>
-       <div style="margin: 25px 25px 25px 25px;"><child2 /></div>
+        Parent <button @click="child1Key++">Key'i değiştir</button>
+       <div style="margin: 25px 25px 25px 25px;">
+           <child1 :key="child1Key"  />
+       </div>
+       <div style="margin: 25px 25px 25px 25px;">
+           <child2 />
+       </div>
     </div>
 </template>
 
@@ -15,6 +19,11 @@
         components: {
             child1,
             child2,
+        },
+        data() {
+            return {
+                child1Key: 1,
+            }
         },
         created() {
             EventBus.$on(EventBusListener.CHILD_2_IN_CHILD_MESSAGE, (message)=> {

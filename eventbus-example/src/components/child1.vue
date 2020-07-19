@@ -18,10 +18,9 @@
             }
         },
         created() {
-            EventBus.$on(EventBusListener.CHILD_2_MESSAGE, (data)=> {
-                this.child2Message = data;
+            EventBus.$on(EventBusListener.CHILD_2_MESSAGE, (text)=> {
+                this.child2Message = text;
             });
-
             EventBus.$on(EventBusListener.CHILD_2_IN_CHILD_MESSAGE, (data)=> {
                 this.child2InChildMessage = data;
             });
@@ -29,6 +28,8 @@
         beforeDestroy() {
             EventBus.$off();
         }
+
+
     }
 </script>
 
